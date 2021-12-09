@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
-const http = require('http');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const morgan = require('morgan')
 const initDatabase = require('./db/index')
-
+const router = require('./router');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(helmet());
+app.use(router);
 app.enable('trust proxy');
 
 initDatabase()
