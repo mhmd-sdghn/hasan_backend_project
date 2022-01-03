@@ -4,7 +4,8 @@ const Celebreties = new mongoose.Schema({
     title: String,
     image: String,
     face: String,
-    birthday: String,
+    birthday:String,
+    knowledge: String,
     description: String
 } , { timestamps: true , toJson: { virtual: true }})
 

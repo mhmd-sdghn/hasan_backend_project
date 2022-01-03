@@ -2,10 +2,10 @@ const Celebreties = require('../db/model/Celebreties')
 
 module.exports = async function (req, res) {
     try {
-        const record = await Celebreties.findOneById(req.params.id);
+        const record = await Celebreties.findById(req.params.id);
 
         if (record) {
-            record.remove();
+            record.destory();
         }
 
         res.send();

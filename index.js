@@ -10,7 +10,7 @@ const router = require('./router');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
-app.user(cors());
+app.use(cors());
 app.use(helmet());
 app.use(router);
 app.enable('trust proxy');
