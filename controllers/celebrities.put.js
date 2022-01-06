@@ -11,15 +11,13 @@ module.exports = async function (req, res) {
 
     const tags = `${title} ${face} ${birthday} ${knowledge || ""}`;
 
-    const target_id = mongoose.Types.ObjectId(req.body.id);
-
-    const result = await Celebreties.findOneAndUpdate(
-      { id: target_id },
-      { $set: { ...req.body, tags, id: undefined } },
+    const record = await Celebreties.findByIdAndUpdate(
+      req.body.id,
+      { ...req.body, tags, id: undefined },
       { new: true }
     );
 
-    res.json(result);
+    res.json(record);
   } catch (err) {
     console.error("celebrities.put ", err);
     return res.status(500).send();
