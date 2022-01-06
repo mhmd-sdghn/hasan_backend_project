@@ -2,7 +2,7 @@ const Celebreties = require("../db/model/Celebreties");
 
 exports.getAll = async function (req, res) {
   try {
-    const result = await Celebreties.find({}); // .select("-tags");
+    const result = await Celebreties.find({}).select("-tags");
     res.json(result);
   } catch (err) {
     console.error("celebrities.get ", err);
