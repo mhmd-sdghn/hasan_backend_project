@@ -14,7 +14,9 @@ exports.search = async function (req, res) {
   try {
     if (!req.query.q) req.query.q = "";
 
-    const result = await Celebreties.find({ $text: { $search: req.query.q } });
+    const result = await Celebreties.find({
+      $text: { $search: req.query.q },
+    }).select("-tags");
 
     res.json(result);
   } catch (err) {
