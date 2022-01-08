@@ -2,7 +2,9 @@ const Celebreties = require("../db/model/Celebreties");
 
 exports.getAll = async function (req, res) {
   try {
-    const result = await Celebreties.find({}).select("-tags").sort({createdAt: -1});
+    const result = await Celebreties.find({})
+      .select("-tags")
+      .sort({ createdAt: -1 });
     res.json(result);
   } catch (err) {
     console.error("celebrities.get ", err);
@@ -12,11 +14,16 @@ exports.getAll = async function (req, res) {
 
 exports.search = async function (req, res) {
   try {
-    if (!req.query.q) req.query.q = "";
-
-    const result = await Celebreties.find({
-      $text: { $search: req.query.q },
-    }).select("-tags");
+    let result;
+    if (!req.query.q) {
+      result = await Celebreties.find({})
+        .select("-tags")
+        .sort({ createdAt: -1 });
+    } else {
+      result = await Celebreties.find({
+        $text: { $search: req.query.q },
+      }).select("-tags");
+    }
 
     res.json(result);
   } catch (err) {
