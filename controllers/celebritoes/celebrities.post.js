@@ -1,11 +1,11 @@
-const Celebreties = require("../db/model/Celebreties");
+const Celebreties = require("../../db/model/Celebreties");
 
 module.exports = async function (req, res) {
   try {
     const { title, face, birthday, knowledge } = req.body;
 
     const tags = `${title} ${face} ${birthday} ${knowledge || ""}`;
-    
+
     const result = await Celebreties.create({ ...req.body, tags });
 
     res.json(result);

@@ -1,11 +1,9 @@
-const Celebreties = require("../db/model/Celebreties");
+const Celebreties = require("../../db/model/Celebreties");
 
 module.exports = async function (req, res) {
   try {
-     
     const record = await Celebreties.findById(req.params.id);
 
-    
     if (record) {
       await record.remove();
     }

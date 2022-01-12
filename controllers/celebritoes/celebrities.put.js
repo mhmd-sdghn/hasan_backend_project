@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Celebreties = require("../db/model/Celebreties");
+const Celebreties = require("../../db/model/Celebreties");
 
 module.exports = async function (req, res) {
   try {

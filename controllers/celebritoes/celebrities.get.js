@@ -1,4 +1,4 @@
-const Celebreties = require("../db/model/Celebreties");
+const Celebreties = require("../../db/model/Celebreties");
 
 exports.getAll = async function (req, res) {
   try {
