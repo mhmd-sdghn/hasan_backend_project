@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const cors = require("cors");
 const morgan = require("morgan");
-const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
 const initDatabase = require("./db/index");
 const router = require("./router");
 require("dotenv").config();
@@ -20,7 +20,7 @@ app.use(
   })
 );
 app.use(helmet());
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(router);
 app.enable("trust proxy");
 
