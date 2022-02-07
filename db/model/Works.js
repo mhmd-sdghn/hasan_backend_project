@@ -15,4 +15,4 @@ const WorkSchema = new mongoose.Schema(
   { timeseries: true, toJSON: { virtuals: true } }
 );
 
-mongoose.exports = mongoose.model("works", WorkSchema);
+module.exports = mongoose.model("works", WorkSchema);

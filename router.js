@@ -26,7 +26,7 @@ router.delete("/celebrities/:id", TokenMiddleware, celebritiesDelete);
 
 router.put("/celebrities", TokenMiddleware, celebritiesPut);
 
-router.post("/works", TokenMiddleware, worksPost);
+router.post("/works", worksPost);
 
 router.put("/works", TokenMiddleware, worksPut);
 

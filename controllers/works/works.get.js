@@ -1,5 +1,5 @@
 const Works = require("../../db/model/Works");
-
+const Celebreties = require("../../db/model/Celebreties");
 exports.getAll = async function (req, res) {
   try {
     const result = await Works.find({}).sort({ createdAt: -1 });
