@@ -7,12 +7,12 @@ module.exports = async function (req, res) {
       return res.status(404).send();
     }
 
-    const { title, face, birthday, knowledge } = req.body;
+    const { id, title, face, birthday, knowledge } = req.body;
 
     const tags = `${title} ${face} ${birthday} ${knowledge || ""}`;
 
     const record = await Celebreties.findByIdAndUpdate(
-      req.body.id,
+      id,
       { ...req.body, tags, id: undefined },
       { new: true }
     );
