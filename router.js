@@ -7,6 +7,7 @@ const loginPost = require("./controllers/auth/login.post");
 const worksPost = require("./controllers/works/works.post");
 const worksPut = require("./controllers/works/works.put");
 const worksDelete = require("./controllers/works/works.delete");
+const worksGet = require("./controllers/works/works.get");
 const TokenMiddleware = require("./middleware/token");
 
 router.get("/", (req, res) => {
@@ -30,6 +31,12 @@ router.post("/works", TokenMiddleware, worksPost);
 router.put("/works", TokenMiddleware, worksPut);
 
 router.delete("/works/:id", TokenMiddleware, worksDelete);
+
+router.get("/works", worksGet.getAll);
+
+router.get("/works/search", worksGet.search);
+
+router.get("/works/:id", worksGet.getSingle);
 
 router.post("/auth/login", loginPost);
 
