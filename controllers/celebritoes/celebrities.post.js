@@ -1,16 +1,13 @@
-const Celebreties = require("../../db/model/Celebreties");
+const Works = require("../../db/model/Works");
 
 module.exports = async function (req, res) {
   try {
-    const { title, face, birthday, knowledge } = req.body;
-
-    const tags = `${title} ${face} ${birthday} ${knowledge || ""}`;
-
-    const result = await Celebreties.create({ ...req.body, tags });
+    // type , description and author
+    const result = await Works.create({ ...req.body });
 
     res.json(result);
   } catch (err) {
-    console.error("celebrities.post ", err);
+    console.error("works.post ", err);
     return res.status(500).send();
   }
 };
