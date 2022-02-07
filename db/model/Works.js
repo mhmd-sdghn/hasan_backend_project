@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 
 const WorkSchema = new mongoose.Schema(
   {
-    title: String,
+    title: {
+      type: String,
+      index: "text",
+    },
     description: String,
     author: {
       type: mongoose.Schema.Types.ObjectId,
