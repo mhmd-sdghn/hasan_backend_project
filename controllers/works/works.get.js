@@ -15,7 +15,7 @@ exports.search = async function (req, res) {
     let result;
     if (!req.query.q) {
       result = await Works.find({})
-        .populate("celebreties", "title")
+        .populate("celebreties", "-tags")
         .sort({ createdAt: -1 });
     } else {
       result = await Works.find({
@@ -32,7 +32,10 @@ exports.search = async function (req, res) {
 
 exports.getSingle = async function (req, res) {
   try {
-    const result = await Works.findById(req.params?.id).populate("celebreties");
+    const result = await Works.findById(req.params?.id).populate(
+      "author",
+      "-tags"
+    );
 
     if (!result) return res.status(404).send();
 
