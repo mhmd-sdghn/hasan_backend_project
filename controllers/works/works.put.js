@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Celebreties = require("../../db/model/Celebreties");
+const Works = require("../../db/model/Works");
 
 module.exports = async function (req, res) {
   try {
@@ -7,7 +7,7 @@ module.exports = async function (req, res) {
       return res.status(404).send();
     }
 
-    const record = await Celebreties.findByIdAndUpdate(
+    const record = await Works.findByIdAndUpdate(
       req.body.id,
       { ...req.body },
       { new: true }

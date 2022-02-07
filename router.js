@@ -6,6 +6,7 @@ const celebritiesDelete = require("./controllers/celebritoes/celebrities.delete"
 const loginPost = require("./controllers/auth/login.post");
 const worksPost = require("./controllers/works/works.post");
 const worksPut = require("./controllers/works/works.put");
+const worksDelete = require("./controllers/works/works.delete");
 const TokenMiddleware = require("./middleware/token");
 
 router.get("/", (req, res) => {
@@ -27,6 +28,8 @@ router.put("/celebrities", TokenMiddleware, celebritiesPut);
 router.post("/works", TokenMiddleware, worksPost);
 
 router.put("/works", TokenMiddleware, worksPut);
+
+router.delete("/works/:id", TokenMiddleware, worksDelete);
 
 router.post("/auth/login", loginPost);
 
