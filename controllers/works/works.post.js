@@ -4,9 +4,7 @@ module.exports = async function (req, res) {
   try {
     const { title, description } = req.body;
 
-    const tags = `${title} ${face} ${birthday} ${knowledge || ""}`;
-
-    const result = await Celebreties.create({ ...req.body, tags });
+    const result = await Celebreties.create({ ...req.body });
 
     res.json(result);
   } catch (err) {
