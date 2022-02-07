@@ -10,7 +10,7 @@ module.exports = async function (req, res) {
 
     res.send();
   } catch (err) {
-    console.error("celebrities.delete ", err);
+    console.error("works.delete ", err);
     return res.status(500).send();
   }
 };
