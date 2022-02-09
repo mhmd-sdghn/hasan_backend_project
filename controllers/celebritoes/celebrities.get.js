@@ -34,7 +34,11 @@ exports.search = async function (req, res) {
 
 exports.getSingle = async function (req, res) {
   try {
-    const result = await Celebreties.findById(req.params?.id).select("-tags");
+    let result = await Celebreties.findById(req.params?.id);
+
+    result = await result.populate({
+      path: "works",
+    });
 
     if (!result) return res.status(404).send();
 

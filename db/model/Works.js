@@ -12,7 +12,7 @@ const WorkSchema = new mongoose.Schema(
       ref: "celebreties",
     },
   },
-  { timeseries: true, toJSON: { virtuals: true } }
+  { timestamps: true, toJSON: { virtuals: true } }
 );
 
 module.exports = mongoose.model("works", WorkSchema);

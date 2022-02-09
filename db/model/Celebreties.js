@@ -13,7 +13,13 @@ const Celebreties = new mongoose.Schema(
       index: "text",
     },
   },
-  { timestamps: true, toJson: { virtual: true } }
+  { timestamps: true, toJSON: { virtuals: true } }
 );
+
+Celebreties.virtual("works", {
+  ref: "works",
+  localField: "_id",
+  foreignField: "author",
+});
 
 module.exports = mongoose.model("celebreties", Celebreties);
