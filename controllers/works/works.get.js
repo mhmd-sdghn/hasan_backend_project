@@ -17,12 +17,14 @@ exports.search = async function (req, res) {
     let result;
     if (!req.query.q) {
       result = await Works.find({})
-        .populate("celebreties", "-tags")
+        .populate("author", "-tags")
         .sort({ createdAt: -1 });
     } else {
       result = await Works.find({
         $text: { $search: req.query.q },
-      }).select("-tags");
+      })
+        .populate("author", "-tags")
+        .select("-tags");
     }
 
     res.json(result);
